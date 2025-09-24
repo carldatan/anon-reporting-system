@@ -74,7 +74,7 @@ export async function signInWithGoogle() {
 				access_type: "offline",
 				prompt: "consent",
 			},
-			redirectTo: 'http://localhost:3000/callback?next=/home',
+			redirectTo: "https://anon-reporting-system.vercel.app/callback?next=/home",
 		},
 	});
 
