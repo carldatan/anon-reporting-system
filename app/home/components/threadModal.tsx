@@ -80,6 +80,7 @@ export default function ThreadModal({ isOpen, onClose, thread, replies, onReplyA
 
 				<ReplyCard
 					thread={thread}
+					onReplyRemoved={onReplyRemoved}
 					replies={replies}
 					onReplyAdded={onReplyAdded}
 					onReplyRefresh={onReplyRefresh}

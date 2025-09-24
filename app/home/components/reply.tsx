@@ -17,6 +17,7 @@ type ThreadProps = {
 	onReply?: (parentId: number, content: string) => void;
 	onReplyUpvote?: (replyId: number) => void;
 	onReplyAdded: (reply: reply) => void;
+	onReplyRemoved: (replyId: number) => void;
 	onReplyRefresh: () => void;
 	maxDepth?: number;
 }
@@ -167,6 +168,7 @@ function SingleReply({
 						.sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime())
 						.map((childReply) => (
 							<SingleReply
+								onReplyRemoved={onReplyRemoved}
 								key={childReply.id}
 								reply={childReply}
 								allReplies={allReplies}
@@ -201,6 +203,7 @@ export default function ReplyCard({
 	onReplyRefresh,
 	onReplyAdded,
 	onReplyUpvote,
+	onReplyRemoved,
 	maxDepth = 5
 }: ThreadProps) {
 
@@ -231,6 +234,7 @@ export default function ReplyCard({
 
 			{sortedTopLevelReplies.map((reply) => (
 				<SingleReply
+					onReplyRemoved={onReplyRemoved}
 					key={reply.id}
 					reply={reply}
 					thread={thread}

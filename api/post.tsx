@@ -1,7 +1,6 @@
 "use server"
 import { createClient } from "@/utils/supabase/server";
 import { revalidatePath } from 'next/cache'
-import type { Database } from "@/types/supabase";
 
 // Remove this line - can't call async function at module level
 // const userID = getUserID();
