@@ -14,7 +14,7 @@ export default function Thread({ initialThreads, handleModal }: ThreadProps) {
 	return (
 		<>
 			{initialThreads.map(thread => (
-				<Card key={thread.id} className="m-2 shadow-sm border-0  w-full">
+				<Card key={thread.id} className="m-2 shadow-sm border-0 max-w-2xl  w-full">
 					<CardHeader>
 						<CardTitle>{thread.header}</CardTitle>
 						<CardDescription>{thread.profiles?.username ?? "Unknown"}</CardDescription>

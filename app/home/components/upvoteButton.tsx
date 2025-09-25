@@ -23,6 +23,7 @@ const UpvoteButton: React.FC<UpvoteProps> = ({
 	const [upvoteCount, setUpvoteCount] = useState(initialCount);
 
 	const handleClick = async () => {
+		console.log(user_id)
 		const newVotedState = !isVoted;
 		setIsVoted(newVotedState)
 		setUpvoteCount(prev => prev + (newVotedState ? 1 : -1));
@@ -32,7 +33,7 @@ const UpvoteButton: React.FC<UpvoteProps> = ({
 			await fetch(`/api/upvote`, {
 				method: newVotedState ? "POST" : "DELETE",
 				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ post_id: thread_id, user_id })
+				body: JSON.stringify({ post_id: thread_id })
 			});
 		} catch (err) {
 			console.error("Failed to save upvote:", err);

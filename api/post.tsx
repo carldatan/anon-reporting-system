@@ -37,16 +37,6 @@ type post = {
 	}
 }
 
-async function getUserID() {
-	const supabase = await createClient();
-	const { data: { user } } = await supabase.auth.getUser();
-
-	if (user) {
-		return user.id;
-	}
-	return null; // Return null if no user
-}
-
 export async function GetPosts() {
 	const supabase = createClient();
 	try {
@@ -143,7 +133,6 @@ export async function createPost({ content, header }: createPostProps) {
 			return { success: false, error: error.message }
 		}
 
-		console.log('Post created successfully:', data[0])
 		revalidatePath('/home')
 		return { success: true, data: data[0] }
 

@@ -20,7 +20,6 @@ const home = async () => {
 		return <h1>There are no posts.</h1>
 	}
 
-	// console.log(initialThreads);
 
 
 	return (

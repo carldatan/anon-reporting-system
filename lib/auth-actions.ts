@@ -66,6 +66,10 @@ export async function signout() {
 }
 
 export async function signInWithGoogle() {
+	const redirectTo = process.env.NODE_ENV === "production"
+		? "https://anon-reporting-system.vercel.app/callback?next=/home"
+		: "http://localhost:3000/callback?next=/home"
+
 	const supabase = createClient();
 	const { data, error } = await supabase.auth.signInWithOAuth({
 		provider: "google",
@@ -74,7 +78,8 @@ export async function signInWithGoogle() {
 				access_type: "offline",
 				prompt: "consent",
 			},
-			redirectTo: "https://anon-reporting-system.vercel.app/callback?next=/home",
+
+			redirectTo: redirectTo,
 		},
 	});
 
